@@ -1,26 +1,23 @@
-# Add project specific ProGuard rules here.
-# By default, the flags in this file are appended to flags specified
-# in C:\Tools\Android\sdk/tools/proguard/proguard-android.txt
-# You can edit the include path and order by changing the proguardFiles
-# directive in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# For more details, see http://developer.android.com/guide/developing/tools/proguard.html
 
-# Add any project specific keep options here:
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
--keep class org.eclipse.** { *; }
--keep interface org.eclipse.** { *; }
--keep enum org.eclipse.** { *; }
--keep class io.netty.** { *; }
--keep interface io.netty.** { *; }
--keep enum io.netty.** { *; }
--dontwarn org.eclipse.**
--dontwarn org.slf4j.**
--dontwarn io.netty.**
+##### Rules required for Californium to work #####
+# Needed to read StringUtil.CALIFORNIUM_VERSION
+-keep class org.eclipse.californium.elements.util.StringUtil
+# May be needed if you are not using SLF4J (could not reproduce issue in this sample yet)
+-keep class org.slf4j.MDC { *; }
+
+# TODO: Add more rules that could be required for Californium to work properly.
+
+# TODO: Add the rules above to the Californium library instead of in the sample app.
+#  For example, create a file "<library-dir>/META-INF/proguard/californium.pro" with the rules above.
+#  See also: https://developer.android.com/studio/build/shrink-code#configuration-files
+
+
+##### Rules added for this sample for testing #####
+# Keep line numbers for debugging
+-keepattributes SourceFile,LineNumberTable
+-renamesourcefileattribute SourceFile
+# Move all classes to the root package to see what happens with Californium
+-repackageclasses ''
+
