@@ -17,8 +17,6 @@ local.properties
 # Android #
 ###########
 .gradle
-gradle*.properties
-gradlew*
 build/
 
 # Maven #
@@ -63,6 +61,9 @@ target/
 *.rar
 *.tar
 *.zip
+# jar files are ignored. However, the gradle-wrapper.jar should be included in the Android demo so
+# it works even if Gradle is not installed. See: https://docs.gradle.org/current/userguide/gradle_wrapper.html#sec:adding_wrapper
+!gradle-wrapper.jar
 
 # Logs and databases #
 ######################
