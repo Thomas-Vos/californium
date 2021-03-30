@@ -5,7 +5,7 @@
 # Needed to read StringUtil.CALIFORNIUM_VERSION
 -keep class org.eclipse.californium.elements.util.StringUtil
 # May be needed if you are not using SLF4J (could not reproduce issue in this sample yet)
--keep class org.slf4j.MDC { *; }
+#-keep class org.slf4j.MDC { *; }
 
 # TODO: Add more rules that could be required for Californium to work properly.
 
@@ -20,4 +20,6 @@
 -renamesourcefileattribute SourceFile
 # Move all classes to the root package to see what happens with Californium
 -repackageclasses ''
+
+-dontobfuscate # makes decompiling/debugging easier and does not seem to affect the issue in my real project.
 

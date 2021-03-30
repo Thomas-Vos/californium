@@ -10,6 +10,14 @@ repositories {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('/Users/thomas/GitHub/californium/demo-apps/cf-android/Keystore')
+            storePassword 'californium'
+            keyAlias 'californium'
+            keyPassword 'californium'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
@@ -24,6 +32,7 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 
@@ -46,5 +55,5 @@ dependencies {
     implementation 'org.eclipse.californium:element-connector:3.0.0-SNAPSHOT'
     implementation 'org.eclipse.californium:scandium:3.0.0-SNAPSHOT'
     implementation 'org.eclipse.californium:demo-certs:3.0.0-SNAPSHOT'
-    implementation 'com.github.tony19:logback-android:1.1.1-11'
+//    implementation 'com.github.tony19:logback-android:1.1.1-11'
 }
